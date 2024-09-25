@@ -1,0 +1,40 @@
+<%- include('partials/header.ejs') %>
+    <div class="container d-flex justify-content-center" style="margin-top: 5vw;">
+        <form action="/edit/provinsi/<%= provinsiById[0].id %>"
+            class="d-flex flex-column p-3 mt-3 gap-3 align-items-start text-white" method="post">
+            <label for="provinsi" class="fs-5 ">Provinsi</label>
+            <select name="provinsi" class="w-100 form-control" id="provinsi">
+                <% for( let i=0; i <options.length; i++ ) { %>
+                    <% if (provinsiById[0].nama==options[i].provinsi) { %>
+                        <option value="<%= provinsiById[0].nama %>" selected>
+                            <%= provinsiById[0].nama %>
+                        </option>
+                        <% } else {%>
+                            <option value="<%= options[i].provinsi %>">
+                                <%= options[i].provinsi %>
+                            </option>
+                            <% }%>
+                                <% } %>
+            </select>
+            <label for="diresmikan" class="fs-5 ">
+                Diresmikan
+            </label>
+            <input type="date" name="diresmikan" value="<%= diresmikan %>" id="diresmikan" class="w-100 form-control">
+            <label for="provinsi" class="fs-5 ">Pulau</label>
+            <select name="pulau" class="w-100 form-control" id="pulau">
+                <% for( let i=0; i < optionsPulau.length; i++ ) { %>
+                    <% if (provinsiById[0].pulau==optionsPulau[i].pulau) { %>
+                        <option value="<%= provinsiById[0].pulau %>" selected>
+                            <%= provinsiById[0].pulau %>
+                        </option>
+                        <% } else {%>
+                            <option value="<%= optionsPulau[i].pulau %>">
+                                <%= optionsPulau[i].pulau %>
+                            </option>
+                            <% } %>
+                                <% } %>
+            </select>
+            <button type="submit" class="btn btn-primary w-50 mt-3">Submit</button>
+        </form>
+    </div>
+    <%- include('partials/footer.ejs') %>

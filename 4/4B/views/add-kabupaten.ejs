@@ -1,0 +1,22 @@
+<%- include('partials/header.ejs') %>
+    <div class="container d-flex justify-content-center" style="margin-top: 5vw;">
+        <form action="/post-kabupaten/<%= provinsiById[0].id %>"
+            class="d-flex flex-column p-3 mt-3 gap-3 align-items-start text-white" method="post"
+            enctype="multipart/form-data">
+            <label for="kabupaten" class="fs-5 ">Kabupaten</label>
+            <select name="kabupaten" class="w-100 form-control" id="kabupaten">
+                <% for( let i=0; i < options.length; i++ ) { %>
+                    <option value='<%=options[i].kabupaten %>'>
+                        <%=options[i].kabupaten %>
+                    </option>
+                    <% } %>
+            </select>
+            <label for="diresmikan" class="fs-5 ">Diresmikan</label>
+            <input type="date" name="diresmikan" id="diresmikan" class="w-100 form-control">
+            <label for="diresmikan" class="fs-5 ">Image</label>
+            <input type="file" name="image" id="image" class="w-100 form-control" style="border: 1px solid black;">
+            <button type="submit" class="btn btn-primary w-25 mt-3">Submit</button>
+        </form>
+    </div>
+
+    <%- include('partials/footer.ejs') %>

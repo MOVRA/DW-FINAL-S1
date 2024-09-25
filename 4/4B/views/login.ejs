@@ -1,0 +1,21 @@
+<%- include('partials/header.ejs') %>
+    <div class="container d-flex align-items-start pt-5 justify-content-center p5" style="height: 100vh;">
+        <form class="d-flex flex-column gap-3 m-5" style="width: 30rem;" action="/login" method="post">
+            <h1 class="text-white h3  fw-normal ">Sign in</h1>
+            <div class="bg-light rounded-4">
+                <div class="form-floating">
+                    <input type="email" class="form-control rounded-top-4" id="floatingInput" placeholder="name@example.com"
+                        fdprocessedid="n3o75t" name="email">
+                    <label for="floatingInput">Email address</label>
+                </div>
+                <div class="form-floating">
+                    <input type="password" class="form-control rounded-bottom-4" id="floatingPassword"
+                        placeholder="Password" fdprocessedid="fb6zy4" name="password">
+                    <label for="floatingPassword">Password</label>
+                </div>
+            </div>
+            <button class="btn btn-primary w-100 py-2" type="submit" fdprocessedid="rolttq">Sign up</button>
+        </form>
+    </div>
+
+    <%- include('partials/footer.ejs') %>

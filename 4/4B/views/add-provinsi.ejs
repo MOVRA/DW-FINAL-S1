@@ -1,0 +1,32 @@
+<%- include('partials/header.ejs') %>
+    <div class="container d-flex justify-content-center" style="margin-top: 5vw;">
+        <form action="/post-provinsi" class="d-flex flex-column p-3 mt-3 gap-3 align-items-start text-white" method="post"
+            enctype="multipart/form-data">
+            <label for="provinsi" class="fs-5 ">Provinsi</label>
+            <select name="provinsi" class="w-100 form-control" id="provinsi">
+                <% for( let i=0; i < options.length; i++ ) { %>
+                    <option value='<%=options[i].provinsi %>'>
+                        <%=options[i].provinsi %>
+                    </option>
+                    <% } %>
+            </select>
+            <label for="diresmikan" class="fs-5 ">Diresmikan</label>
+            <input type="date" name="diresmikan" id="diresmikan" class="w-100 form-control">
+            <label for="provinsi" class="fs-5 ">Pulau</label>
+            <select name="pulau" class="w-100 form-control" id="pulau">
+                <option value="Sumatra">Sumatra</option>
+                <option value="Kalimantan">Kalimantan</option>
+                <option value="Jawa">Jawa</option>
+                <option value="Nusa Tenggara">Nusa Tenggara</option>
+                <option value="Bali">Bali</option>
+                <option value="Sulawesi">Sulawesi</option>
+                <option value="Maluku">Maluku</option>
+                <option value="Papua">Papua</option>
+            </select>
+            <label for="diresmikan" class="fs-5 ">Image</label>
+            <input type="file" name="image" id="image" class="w-100 form-control" style="border: 1px solid black;">
+            <button type="submit" class="btn btn-primary w-25 mt-3">Submit</button>
+        </form>
+    </div>
+
+    <%- include('partials/footer.ejs') %>

@@ -1,0 +1,80 @@
+<%- include('partials/header.ejs') %>
+
+    <div class="container text-white " style="margin-top: 10vw;">
+        <% for( let i=0; i < provinsiById.length; i++ ) { %>
+            <div class="rounded-4 d-flex flex-lg-row shadow-lg flex-column gap-3 align-items-lg-center">
+                <img src="../<%= provinsiById[i].photo %>" alt="" class="rounded-4" style=" width: 20rem; height: 20rem; object-fit: cover;">
+                <div class="gap-4 d-flex flex-column">
+                    <h1 class="fs-5 mt-3">
+                        <%= provinsiById[i].nama %>
+                    </h1>
+                    <h1 class="fs-5 mt-3">
+                        Diresmikan : <%= provinsiById[i].diresmikan %>
+                    </h1>
+                    <h1 class="fs-5 mt-3">
+                        Pulau : <%= provinsiById[i].pulau %>
+                    </h1>
+                    <div class="d-flex gap-3">
+                        <% if (user) { %>
+                            <% if (user.id==provinsiById[i].user_id) { %>
+                                <a href="/edit/provinsi/<%= provinsiById[i].id %>" type="button"
+                                    class="btn btn-sm btn-outline-secondary">Edit</a>
+                                <form action="/delete/provinsi/<%= provinsiById[i].id %>" method="post" class="w-75">
+                                    <button type="submit" class="btn btn-sm btn-outline-secondary">Delete</button>
+                                </form>
+                                <% } %>
+                                    <% } else {%>
+                                        <% } %>
+                    </div>
+                </div>
+            </div>
+            <div class="container shadow-lg p-3 mt-5 d-flex justify-content-between align-items-center">
+                <h1 class="fs-3">
+                    Kabupaten
+                </h1>
+                <% if (user) { %>
+                    <% if (user.id==provinsiById[i].user_id) { %>
+                        <a href="/add-kabupaten/<%= provinsiById[i].id %>"
+                            class="btn btn-outline-secondary d-flex justify-content-center">
+                            <ion-icon name="add-outline" style="width: 1.8rem; height: 1.8rem;"></ion-icon>
+                        </a>
+                        <% } %>
+                            <% } else {%>
+                                <% } %>
+            </div>
+            <% } %>
+                <div class="album py-5 ">
+                    <div class="container">
+                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                            <% for( let i=0; i < kabupaten.length; i++ ) { %>
+                                <div class="col">
+                                    <div class="card shadow-lg bg-dark text-white">
+                                        <img src="../<%= kabupaten[i].photo %>" class="bd-placeholder-img card-img-top"
+                                            alt="" width="100%" height="325" role="img"
+                                            aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice"
+                                            focusable="false">
+                                        <div class="card-body">
+                                            <p class="card-text">
+                                                <%= kabupaten[i].nama %>
+                                            </p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="btn-group">
+                                                    <a type="button" href="/kabupaten-detail/<%= kabupaten[i].id %>"
+                                                        class="btn btn-sm btn-outline-secondary">View</a>
+                                                </div>
+                                                <small class="text-body-light">
+                                                    <%= kabupaten[i].diresmikan %>
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% } %>
+                        </div>
+                    </div>
+                </div>
+    </div>
+    </div>
+
+
+    <%- include('partials/footer.ejs') %>

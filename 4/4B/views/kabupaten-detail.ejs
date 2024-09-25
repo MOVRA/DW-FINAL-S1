@@ -1,0 +1,36 @@
+<%- include('partials/header.ejs') %>
+
+    <div class="container text-white " style="margin-top: 10vw;">
+        <% for( let i=0; i < kabupaten.length; i++ ) { %>
+            <div class="rounded-4 d-flex flex-lg-row shadow-lg flex-column gap-3 align-items-lg-center">
+                <img src="../<%= kabupaten[i].photo %>" alt="" class="rounded-4" style=" width: 20rem; height: 20rem; object-fit: cover;">
+                <div class="gap-4 d-flex flex-column">
+                    <h1 class="fs-5 mt-3">
+                        <%= kabupaten[i].nama %>
+                    </h1>
+                    <h1 class="fs-5 mt-3">
+                        Diresmikan : <%= kabupaten[i].diresmikan %>
+                    </h1>
+                    <h1 class="fs-5 mt-3">
+                        Pulau : <%= provinsiById[i].pulau %>
+                    </h1>
+                    <div class="d-flex gap-3">
+                        <% if (user) { %>
+                            <% if (user.id == provinsiById[0].user_id) { %>
+                                <a href="/edit/kabupaten/<%= kabupaten[i].id %>" type="button"
+                                    class="btn btn-sm btn-outline-secondary">Edit</a>
+                                <form action="/delete/kabupaten/<%= kabupaten[i].id %>" method="post" class="w-75">
+                                    <button type="submit" class="btn btn-sm btn-outline-secondary">Delete</button>
+                                </form>
+                                <% } %>
+                                    <% } else {%>
+                                        <% } %>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+    </div>
+    </div>
+
+
+    <%- include('partials/footer.ejs') %>

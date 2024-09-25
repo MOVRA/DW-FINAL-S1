@@ -1,0 +1,53 @@
+<%- include('partials/header.ejs') %>
+    <section class="py-5 text-center container ">
+        <div class="row py-lg-5 text-white">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="fw-light">WELCOME!</h1>
+                <p class="lead text-white ">Website ini menyediakan tempat untuk mengelompokkan kabupaten berdasarkan
+                    provinsi yang telah di buat oleh pengguna
+                </p>
+                <!-- <p>
+                    <a href="#" class="btn btn-primary my-2">Tambahkan Provinsi</a>
+                    <a href="#" class="btn btn-secondary my-2"></a>
+                </p> -->
+            </div>
+        </div>
+    </section>
+    <hr class="text-white mb-5">
+    <div class="row mb-2 container text-white" style="margin: auto;">
+        <% for( let i=0; i < provinsi.length; i++ ) { %>
+            <div class="col-md-6">
+                <div class="row g-0 rounded-4 overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"
+                    style="border:2px solid rgba(255, 255, 255, 0.313);">
+                    <div
+                        class="col p-4 d-flex flex-column justify-content-center align-items-lg-start align-items-center gap-3">
+                        <strong class="d-inline-block mb-2 fs-5 fw-bold">
+                            <%= provinsi[i].nama %>
+                        </strong>
+                        <div class="mb-1 ">
+                            <%= provinsi[i].diresmikan %>
+                        </div>
+                        <a href="/provinsi/<%= provinsi[i].id %>"
+                            class="icon-link gap-1 icon-link-hover stretched-link fs-5 text-white"
+                            style="text-decoration: none;">
+                            See more
+                            <ion-icon name="arrow-forward-outline" class="bi" xlink:href="#chevron-right"></ion-icon>
+                        </a>
+                    </div>
+                    <div class="col-auto d-none d-lg-block">
+                        <!-- <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg"
+                            role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice"
+                            focusable="false">
+                            <title>Placeholder</title>
+                            <rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef"
+                                dy=".3em">Thumbnail</text>
+                        </svg> -->
+                        <img src="../<%= provinsi[i].photo %>" alt="" class="bd-placeholder-img" width="200" height="250"
+                            style="object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+            <% } %>
+    </div>
+
+    <%- include('partials/footer.ejs') %>

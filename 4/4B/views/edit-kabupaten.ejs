@@ -1,0 +1,26 @@
+<%- include('partials/header.ejs') %>
+    <div class="container d-flex justify-content-center" style="margin-top: 5vw;">
+        <form action="/edit/kabupaten/<%= kabupatenById[0].id %>"
+            class="d-flex flex-column p-3 mt-3 gap-3 align-items-start text-white" method="post">
+            <label for="kabupaten" class="fs-5 ">Kabupaten</label>
+            <select name="kabupaten" class="w-100 form-control" id="kabupaten">
+                <% for( let i=0; i <options.length; i++ ) { %>
+                    <% if (kabupatenById[0].nama==options[i].kabupaten) { %>
+                        <option value="<%= kabupatenById[0].nama %>" selected>
+                            <%= kabupatenById[0].nama %>
+                        </option>
+                        <% } else {%>
+                            <option value="<%= options[i].kabupaten %>">
+                                <%= options[i].kabupaten %>
+                            </option>
+                            <% }%>
+                                <% } %>
+            </select>
+            <label for="diresmikan" class="fs-5 ">
+                Diresmikan
+            </label>
+            <input type="date" name="diresmikan" value="<%= diresmikan %>" id="diresmikan" class="w-100 form-control">
+            <button type="submit" class="btn btn-primary w-50 mt-3">Submit</button>
+        </form>
+    </div>
+    <%- include('partials/footer.ejs') %>
